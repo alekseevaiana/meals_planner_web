@@ -1,0 +1,60 @@
+type PantryIngredient @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  ingredientID: ID! @index(name: "byIngredient")
+  quantity: Int
+  measure: Measure
+}
+
+type GroceryIngredient @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  ingredientID: ID! @index(name: "byIngredient")
+  quantity: Int
+  measure: Measure
+}
+
+enum IngredientTypeEnum {
+  DAIRY
+  OTHER
+  VEGETABLES
+  FRUITS
+}
+
+type Attachment @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String
+  mealID: ID! @index(name: "byMeal")
+}
+
+enum Measure {
+  CUP
+  GRAMM
+  TSP
+  TBSP
+  ML
+}
+
+type MealIngridient @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  quantity: Int
+  measure: Measure
+  ingredientID: ID! @index(name: "byIngredient")
+  mealID: ID! @index(name: "byMeal")
+}
+
+type Ingredient @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  type: IngredientTypeEnum
+  MealIngridients: [MealIngridient] @hasMany(indexName: "byIngredient", fields: ["id"])
+  GroceryIngredients: [MealIngridient] @hasMany(indexName: "byIngredient", fields: ["id"])
+  PantryIngredients: [MealIngridient] @hasMany(indexName: "byIngredient", fields: ["id"])
+}
+
+type Meal @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String
+  MealsAttachment: [MealIngridient] @hasMany(indexName: "byMeal", fields: ["id"])
+  MealIngridients: [MealIngridient] @hasMany(indexName: "byMeal", fields: ["id"])
+  note: String
+}
+ 
