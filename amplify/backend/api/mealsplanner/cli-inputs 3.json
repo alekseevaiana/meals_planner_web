@@ -3,12 +3,11 @@
   "serviceConfiguration": {
     "apiName": "mealsplanner",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/Users/alekseevayana/Desktop/programming/Food Planner/meals_planner_full/amplify/backend/api/mealsplanner/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-8e34be2c-36ec-4fd2-aa2a-412834207dd8/amplify/backend/api/mealsplanner/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 30,
-      "apiKeyExpirationDate": "2022-07-20T20:28:11.776Z",
-      "keyDescription": "api key description"
+      "keyDescription": "api key description",
+      "expirationTime": 30
     },
     "additionalAuthTypes": [
       {

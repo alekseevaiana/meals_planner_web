@@ -19,3 +19,13 @@ After change:
 #### To run locally
 
 `npm start`
+
+### Usage of Spoonacular API
+
+#### Example 1
+
+"https://api.spoonacular.com/food/products/search?query=yogurt&apiKey=API-KEY"
+
+#### Example 2
+
+"https://api.spoonacular.com/food/ingredients/9266/information?apiKey=API-KEY"
